@@ -166,7 +166,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(PROJECTDIR)..\libcppcryptfs;C:\Program Files\Dokan\Dokan Library-2.3.1\include;$(ProjectDir);c:\git\rapidjson\include;C:\git\openssl-amd64-static\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(PROJECTDIR)..\libcppcryptfs;C:\Program Files\Dokan\DokanLibrary-2.3.1\include;$(ProjectDir);D:\Program Files\OpenSSL-Win64\include</AdditionalIncludeDirectories>
       <EnablePREfast>false</EnablePREfast>
       <AdditionalOptions>/Qspectre</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -175,7 +175,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(OutputPath)libcommonutil.lib;$(OutputPath)libipc.lib;$(OutputPath)libcppcryptfs.lib;C:\Program Files\Dokan\Dokan Library-2.3.1\lib\dokan2.lib;version.lib;c:\git\openssl-amd64-static\lib\libcrypto.lib;Shlwapi.lib;Crypt32.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(OutputPath)libcommonutil.lib;$(OutputPath)libipc.lib;$(OutputPath)libcppcryptfs.lib;C:\Program Files\Dokan\DokanLibrary-2.3.1\lib\dokan2.lib;version.lib;D:\Program Files\OpenSSL-Win64\lib\VC\x64\MTd\libcrypto_static.lib;Shlwapi.lib;Crypt32.lib;Ws2_32.lib</AdditionalDependencies>
       <AdditionalOptions>/ignore:4099 /HIGHENTROPYVA %(AdditionalOptions)</AdditionalOptions>
       <UACExecutionLevel>AsInvoker</UACExecutionLevel>
     </Link>
