@@ -1,0 +1,13 @@
+{
+  // 构建产物与 VS 中间目录不参与搜索/文件树污染
+  "search.exclude": {
+    "x64/": true,
+    "**/x64/": true,
+    "**/Debug/": true,
+    "**/Release/": true,
+    "**/.vs/": true
+  },
+  "C_Cpp.errorSquiggles": "enabled",
+  // 仓库中部分文件为 UTF-16 LE（如 libcppcryptfs/stdafx.h），VS Code 凭 BOM 自动识别
+  "files.autoGuessEncoding": true
+}

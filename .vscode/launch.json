@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "调试 cppcryptfs (GUI)",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/x64/Debug/cppcryptfs.exe",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      // 挂载虚拟盘需要 Dokany 驱动；如遇权限问题可右键 VS Code 以管理员运行
+      "console": "internalConsole"
+    },
+    {
+      "name": "调试 cppcryptfsctl (CLI)",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/x64/Debug/cppcryptfsctl.exe",
+      // 示例参数：--init 建卷 / -m 挂载（mount 命令会经命名管道转发给正在运行的 GUI）
+      "args": ["--version"],
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "console": "integratedTerminal"
+    }
+  ]
+}

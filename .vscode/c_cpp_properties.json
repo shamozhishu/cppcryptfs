@@ -1,0 +1,62 @@
+{
+  "configurations": [
+    {
+      "name": "MSVC Debug x64",
+      // VS 2026 (18) Community 工具链 —— 若升级 MSVC 小版本号，改此路径
+      "compilerPath": "D:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
+      "intelliSenseMode": "windows-msvc-x64",
+      "cppStandard": "c++17",
+      "cStandard": "c17",
+      // Windows SDK 安装在 D:\Windows Kits\10（非常规位置，显式指定）
+      "windowsSdkVersion": "10.0.26100.0",
+      // 取自各 .vcxproj Debug|x64 的 PreprocessorDefinitions
+      "defines": [
+        "_DEBUG",
+        "_WINDOWS",
+        "_LIB",
+        "WIN32",
+        "_WIN64",
+        "_UNICODE",
+        "UNICODE"
+      ],
+      // 项目内部根目录 + 本机第三方依赖路径（与 .vcxproj 中一致）
+      "includePath": [
+        "${workspaceFolder}/libcppcryptfs",
+        "${workspaceFolder}/cppcryptfs",
+        "${workspaceFolder}/cppcryptfs/dokan",
+        "${workspaceFolder}/cppcryptfs/ui",
+        "${workspaceFolder}/libipc",
+        "${workspaceFolder}/libcommonutil",
+        "${workspaceFolder}/cppcryptfsctl",
+        "C:/Program Files/Dokan/DokanLibrary-2.3.1/include",
+        "D:/Program Files/OpenSSL-Win64/include",
+        "D:/Code/rapidjson/include",
+        // MSVC 自身 + MFC/ATL（cppcryptfs GUI 用 MFC）
+        "D:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/include",
+        "D:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/atlmfc/include",
+        // Windows SDK（装在 D 盘，显式列出保证 IntelliSense 找得到）
+        "D:/Windows Kits/10/Include/10.0.26100.0/ucrt",
+        "D:/Windows Kits/10/Include/10.0.26100.0/shared",
+        "D:/Windows Kits/10/Include/10.0.26100.0/um",
+        "D:/Windows Kits/10/Include/10.0.26100.0/winrt",
+        "D:/Windows Kits/10/Include/10.0.26100.0/cppwinrt"
+      ],
+      // 本项目头文件不自包含（依赖 .cpp 先包含带 "using namespace std" 的头），
+      // 单独打开 .h 时 shared_ptr/string 会报红。此前置头仅用于 IntelliSense，不参与编译。
+      "forcedInclude": [
+        "${workspaceFolder}/.vscode/intellisense_prefix.h"
+      ],
+      "browse": {
+        "path": [
+          "${workspaceFolder}/libcppcryptfs",
+          "${workspaceFolder}/cppcryptfs",
+          "${workspaceFolder}/libipc",
+          "${workspaceFolder}/libcommonutil",
+          "${workspaceFolder}/cppcryptfsctl"
+        ],
+        "limitSymbolsToIncludedHeaders": false
+      }
+    }
+  ],
+  "version": 4
+}

@@ -1,0 +1,95 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build (Debug x64)",
+      "detail": "MSBuild 编译整个 cppcryptfs.sln（增量）",
+      "type": "shell",
+      "command": "\"D:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe\"",
+      "args": [
+        "${workspaceFolder}\\cppcryptfs.sln",
+        "/p:Configuration=Debug",
+        "/p:Platform=x64",
+        "/m",
+        "/v:m",
+        "/nologo"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$msCompile"
+      ]
+    },
+    {
+      "label": "Rebuild (Debug x64)",
+      "detail": "全部重新编译",
+      "type": "shell",
+      "command": "\"D:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe\"",
+      "args": [
+        "${workspaceFolder}\\cppcryptfs.sln",
+        "/t:Rebuild",
+        "/p:Configuration=Debug",
+        "/p:Platform=x64",
+        "/m",
+        "/v:m",
+        "/nologo"
+      ],
+      "problemMatcher": [
+        "$msCompile"
+      ]
+    },
+    {
+      "label": "Clean (Debug x64)",
+      "detail": "清理构建产物",
+      "type": "shell",
+      "command": "\"D:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe\"",
+      "args": [
+        "${workspaceFolder}\\cppcryptfs.sln",
+        "/t:Clean",
+        "/p:Configuration=Debug",
+        "/p:Platform=x64",
+        "/m",
+        "/v:m",
+        "/nologo"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Build libcppcryptfs only (Debug x64)",
+      "detail": "只编译核心库（改算法层时用，速度最快）",
+      "type": "shell",
+      "command": "\"D:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe\"",
+      "args": [
+        "${workspaceFolder}\\libcppcryptfs\\libcppcryptfs.vcxproj",
+        "/p:Configuration=Debug",
+        "/p:Platform=x64",
+        "/m",
+        "/v:m",
+        "/nologo"
+      ],
+      "group": "build",
+      "problemMatcher": [
+        "$msCompile"
+      ]
+    },
+    {
+      "label": "Build Release x64",
+      "detail": "发布版（注意：Release 配置的第三方依赖路径与 Debug 不同，见 vcxproj）",
+      "type": "shell",
+      "command": "\"D:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe\"",
+      "args": [
+        "${workspaceFolder}\\cppcryptfs.sln",
+        "/p:Configuration=Release",
+        "/p:Platform=x64",
+        "/m",
+        "/v:m",
+        "/nologo"
+      ],
+      "problemMatcher": [
+        "$msCompile"
+      ]
+    }
+  ]
+}
