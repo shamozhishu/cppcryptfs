@@ -5,7 +5,7 @@
       // VS 2026 (18) Community 工具链 —— 若升级 MSVC 小版本号，改此路径
       "compilerPath": "D:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe",
       "intelliSenseMode": "windows-msvc-x64",
-      "cppStandard": "c++17",
+      "cppStandard": "c++14",
       "cStandard": "c17",
       // Windows SDK 安装在 D:\Windows Kits\10（非常规位置，显式指定）
       "windowsSdkVersion": "10.0.26100.0",

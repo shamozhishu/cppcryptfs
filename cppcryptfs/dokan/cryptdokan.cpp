@@ -88,7 +88,6 @@ THE SOFTWARE.
 #include <stdlib.h>
 #include <winbase.h>
 #include <stdarg.h>
-#include <varargs.h>
 
 #include <unordered_map>
 

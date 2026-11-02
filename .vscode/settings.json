@@ -7,7 +7,10 @@
     "**/Release/": true,
     "**/.vs/": true
   },
-  "C_Cpp.errorSquiggles": "enabled",
+  // IntelliSense 交给 clangd（读 .clangd 配置）；cpptools 仅保留调试器（cppvsdbg）和构建任务功能
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "C_Cpp.autocomplete": "disabled",
+  "C_Cpp.errorSquiggles": "disabled",
   // 仓库中部分文件为 UTF-16 LE（如 libcppcryptfs/stdafx.h），VS Code 凭 BOM 自动识别
   "files.autoGuessEncoding": true
 }
