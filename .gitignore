@@ -29,3 +29,4 @@ cppcryptfs/gitversion.rc2
 cppcryptfsctl/gitversion.rc2
 /VersionGenerated.h
 CLAUDE.md
+compile_commands.json

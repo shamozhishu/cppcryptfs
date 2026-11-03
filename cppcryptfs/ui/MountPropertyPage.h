@@ -31,6 +31,8 @@ THE SOFTWARE.
 #include "CryptPropertyPage.h"
 #include "SecureEdit.h"
 
+#include <vector>
+
 #define DL_INDEX 0
 #define PATH_INDEX 1
 

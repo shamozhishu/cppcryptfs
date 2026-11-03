@@ -1,9 +1,14 @@
 # clangd 配置（llvm-vs-code-extensions.vscode-clangd 扩展读取）
 # 注意：clangd 与 cpptools(.vscode/c_cpp_properties.json) 是两套独立引擎，互不读取对方配置。
-# 本文件使 clangd 与 MSVC Debug|x64 配置保持等价；绝对路径为本机安装位置。
+# 正常路径：根目录 compile_commands.json（由 build_scripts/make_compile_commands.py 生成，
+# 每个项目用各自 vcxproj 的 Debug|x64 参数）。本文件仅作为无命令条目文件的 fallback 兜底。
 
 CompileFlags:
   Add:
+    # clangd 的 fallback 会把裸 .h 判成 Objective-C++ 头（-xobjective-c++-header），
+    # MFC 头在 ObjC++ 语义下大量报错（CString 等全红）。强制按 C++ 解析。
+    - -x
+    - c++
     - --target=x86_64-pc-windows-msvc
     # 与 vcxproj 一致：未设 LanguageStandard，MSVC 默认 C++14
     # （C++17 会引入 std::byte，与 windows 头的 ::byte typedef 歧义）
@@ -11,6 +16,8 @@ CompileFlags:
     - -fms-compatibility-version=19.51
     # 历史代码将 wstring 传给变参日志函数（MSVC 扩展可编译），clang 视为告警，抑制之
     - -Wno-non-pod-varargs
+    # MFC 老代码不写 override 关键字
+    - -Wno-inconsistent-missing-override
     # 取自各 .vcxproj Debug|x64 的 PreprocessorDefinitions
     - -D_DEBUG
     - -D_WINDOWS
@@ -34,3 +41,8 @@ CompileFlags:
     - D:/Code/rapidjson/include
     - -isystem
     - C:/Program Files/Dokan/DokanLibrary-2.3.1/include
+
+# 关闭 include-cleaner 的"未使用 include"提示（stdafx.h 模式的项目全是误报）
+Diagnostics:
+  UnusedIncludes: None
+  MissingIncludes: None
