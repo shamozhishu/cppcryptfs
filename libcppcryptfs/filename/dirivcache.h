@@ -28,6 +28,8 @@ THE SOFTWARE.
 
 #pragma once
 
+#include <windows.h>
+
 #include "crypt/cryptdefs.h"
 
 #include <string>
