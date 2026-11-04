@@ -311,7 +311,7 @@ base64_encode(const BYTE *data, DWORD datalen, string& storage, bool urlTransfor
 
 	TempBuffer<char, 4096> base64(base64len + 1);
 
-	if (base64str = base64.get()) {		
+	if ((base64str = base64.get())) {	
 
 		// ATL Base64Encode() is supposedly way faster than CryptBinaryToString()
 	
@@ -561,7 +561,7 @@ bool touppercase(LPCWSTR in, wstring& out)
 
 	bool bRet = true;
 
-	if (buf = tmp.get()) {
+	if ((buf = tmp.get())) {
 
 		size_t len = wcslen(in);		
 
