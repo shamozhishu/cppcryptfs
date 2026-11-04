@@ -76,25 +76,25 @@ CryptSettings::CryptSettings()
 }
 
 
-bool CryptSettings::GetSettingDefault(CryptSettingsRegistryValuesKeys key, int& default)
+bool CryptSettings::GetSettingDefault(CryptSettingsRegistryValuesKeys key, int& default_value)
 {
 	auto it = m_settings_registry_map.find(key);
 	assert(it != m_settings_registry_map.end());
 	if (it == m_settings_registry_map.end())
 		return false;
 
-	default = it->second.default;
+	default_value = it->second.default_value;
 
 	return true;
 }
 
-bool CryptSettings::GetSettingDefault(CryptSettingsRegistryValuesKeys key, bool& default)
+bool CryptSettings::GetSettingDefault(CryptSettingsRegistryValuesKeys key, bool& default_value)
 {
 	int val;
 	if (!GetSettingRecommended(key, val))
 		return false;
 
-	default = val != 0;
+	default_value = val != 0;
 
 	return true;
 }
@@ -130,7 +130,7 @@ bool CryptSettings::GetSettingCurrent(CryptSettingsRegistryValuesKeys key, int& 
 	if (it == m_settings_registry_map.end())
 		return false;
 
-	auto val = theApp.GetProfileInt(CryptSettingsRegValName, it->second.regval_name.c_str(), it->second.default);
+	auto val = theApp.GetProfileInt(CryptSettingsRegValName, it->second.regval_name.c_str(), it->second.default_value);
 
 	current = val;
 

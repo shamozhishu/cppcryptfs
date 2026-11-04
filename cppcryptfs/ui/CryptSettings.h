@@ -30,15 +30,17 @@ THE SOFTWARE.
 #include <string>
 #include <unordered_map>
 
+#include "cryptdefaults.h"
+
 struct CryptMountOptions;
 
 struct CryptSettingConsts {
 	std::wstring regval_name;
-	int default;
+	int default_value;
 	int recommended;
-	CryptSettingConsts() : regval_name(L""), default(0), recommended(0) {}
-	CryptSettingConsts(const wchar_t* name, int default, int recommended) :
-		regval_name((name)), default(default), recommended(recommended) {}
+	CryptSettingConsts() : regval_name(L""), default_value(0), recommended(0) {}
+	CryptSettingConsts(const wchar_t* name, int default_value, int recommended) :
+		regval_name((name)), default_value(default_value), recommended(recommended) {}
 };
 
 
@@ -52,9 +54,9 @@ public:
 
 	static CryptSettings& getInstance();
 
-	bool GetSettingDefault(enum CryptSettingsRegistryValuesKeys key, int& default);
+	bool GetSettingDefault(enum CryptSettingsRegistryValuesKeys key, int& default_value);
 	bool GetSettingRecommended(enum CryptSettingsRegistryValuesKeys key, int& recommended);
-	bool GetSettingDefault(enum CryptSettingsRegistryValuesKeys key, bool& default);
+	bool GetSettingDefault(enum CryptSettingsRegistryValuesKeys key, bool& default_value);
 	bool GetSettingRecommended(enum CryptSettingsRegistryValuesKeys key, bool& recommended);
 	bool GetSettingCurrent(enum CryptSettingsRegistryValuesKeys key, bool& cur);
 	bool GetSettingCurrent(enum CryptSettingsRegistryValuesKeys key, int& cur);
