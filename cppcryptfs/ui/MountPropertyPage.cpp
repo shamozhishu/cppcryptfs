@@ -196,7 +196,7 @@ CString CMountPropertyPage::Mount(LPCWSTR argPath, LPCWSTR argMountPoint, LPCWST
 		LVFINDINFO fi;
 		memset(&fi, 0, sizeof(fi));
 		fi.flags = LVFI_STRING;
-		CString str = wcslen(argMountPoint) == 1 ? CString(*argMountPoint) + L":" : argMountPoint;
+		CString str = wcslen(argMountPoint) == 1 ? CString(*argMountPoint) + L":" : CString(argMountPoint);
 		fi.psz = str;
 		nItem = pList->FindItem(&fi);
 		if (nItem < 0) {
@@ -224,8 +224,8 @@ CString CMountPropertyPage::Mount(LPCWSTR argPath, LPCWSTR argMountPoint, LPCWST
 	if (nItem < 0)
 		return LocUtils::GetStringFromResources(IDS_UNABLE_FIND_ITEM).c_str();
 
-	CString cmp = argMountPoint && wcslen(argMountPoint) > 0 ? 
-		(wcslen(argMountPoint) == 1 ? CString(*argMountPoint) + L":" : argMountPoint) 
+	CString cmp = argMountPoint && wcslen(argMountPoint) > 0 ?
+		(wcslen(argMountPoint) == 1 ? CString(*argMountPoint) + L":" : CString(argMountPoint))
 		: pList->GetItemText(nItem, DL_INDEX);
 
 	if (cmp.GetLength() < 1)
@@ -773,7 +773,7 @@ CString CMountPropertyPage::Dismount(LPCWSTR argMountPoint, bool interactive, bo
 		LVFINDINFO fi;
 		memset(&fi, 0, sizeof(fi));
 		fi.flags = LVFI_STRING;
-		CString str = wcslen(argMountPoint) == 1 ? CString(*argMountPoint) + L":" : argMountPoint;
+		CString str = wcslen(argMountPoint) == 1 ? CString(*argMountPoint) + L":" : CString(argMountPoint);
 		fi.psz = str;
 		nItem = pList->FindItem(&fi);
 		if (nItem < 0) {
@@ -1293,7 +1293,7 @@ struct IntSettingSetterRestorer {
 	int saved_val;
 	int new_val;
 	bool inited = false;
-	void IntSettingSetterRestorer::init(enum CryptSettingsRegistryValuesKeys key, int newval)
+	void init(enum CryptSettingsRegistryValuesKeys key, int newval)
 	{
 		inited = true;
 
