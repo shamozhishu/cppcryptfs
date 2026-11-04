@@ -561,7 +561,9 @@ bool CryptConfig::write_updated_config_file(const char *base64key, const char *s
 			throw (-1);
 		}
 
-		deleteFile.release();
+		// intentional: tmp file was moved onto config_path, destructor must not DeleteFile it
+		auto released = deleteFile.release();
+		(void)released;
 
 		if (bWasReadOnly) {
 			dwAttr = GetFileAttributes(&config_path[0]);
@@ -1008,7 +1010,7 @@ bool CryptConfig::create(const WCHAR *path, const WCHAR *specified_config_file_p
 		fprintf(fl, "\t\t\"N\": %d,\n", m_N);
 		fprintf(fl, "\t\t\"R\": %d,\n", m_R);
 		fprintf(fl, "\t\t\"P\": %d,\n", m_P);
-		fprintf(fl, "\t\t\"KeyLen\": %u\n", GetMasterKeyLength());
+		fprintf(fl, "\t\t\"KeyLen\": %u\n", static_cast<unsigned int>(GetMasterKeyLength()));
 		fprintf(fl, "\t},\n");
 		fprintf(fl, "\t\"Version\": %d,\n", m_Version);
 		fprintf(fl, "\t\"VolumeName\": \"%s\",\n", volume_name_utf8.c_str());
@@ -1034,7 +1036,7 @@ bool CryptConfig::create(const WCHAR *path, const WCHAR *specified_config_file_p
 		if (m_LongNames && m_LongNameMax != MAX_LONGNAMEMAX) {
 			fprintf(fl, "\t],\n");
 			string s = "\t\"LongNameMax\": " + to_string(m_LongNameMax) + "\n";
-			fprintf(fl, s.c_str());
+			fprintf(fl, "%s", s.c_str());
 		} else {
 			fprintf(fl, "\t]\n");
 		}
