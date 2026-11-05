@@ -79,6 +79,11 @@ def main():
                 forced = cfg.get("forced_include", [])
                 if "\\dokan\\" in src:
                     forced = []
+                # locutils.cpp 在 vcxproj 里是 NotUsing PCH：真实构建不含 MFC stdafx，
+                # 它自己包含 <atlstr.h> 使用纯 ATL 的 ATL::CStringW；强制前置 stdafx.h
+                # 会定义 _AFX，而 MFC 环境下 atlstr.h 不再定义 ATL::CStringW
+                if src.endswith("\\ui\\locutils.cpp"):
+                    forced = []
                 args = ["clang++"] + COMMON
                 args += forced
                 args += cfg["defines"]
