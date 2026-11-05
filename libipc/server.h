@@ -28,6 +28,8 @@ THE SOFTWARE.
 
 #pragma once
 
+#include <windows.h>
+
 #include <string>
 
 #include "common.h"

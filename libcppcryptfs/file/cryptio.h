@@ -30,6 +30,8 @@ THE SOFTWARE.
 
 #include <windows.h>
 
+#include <openssl/evp.h>
+
 class CryptContext;
 
 int

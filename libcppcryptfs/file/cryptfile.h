@@ -31,6 +31,7 @@ THE SOFTWARE.
 #include <windows.h>
 
 #include <string>
+#include "crypt/cryptdefs.h"
 #include "openfiles.h"
 
 using namespace std;

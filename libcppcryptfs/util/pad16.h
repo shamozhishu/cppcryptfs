@@ -40,6 +40,8 @@ Bellow is the comment header from pad16.go
 
 #include <windows.h>
 
+#include "util/util.h"
+
 template <size_t L>
 bool pad16(const BYTE* orig, int len, int& newLen, TempBuffer<BYTE, L>& padded) {
 	int oldLen = len;

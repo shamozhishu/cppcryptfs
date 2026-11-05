@@ -28,6 +28,8 @@ THE SOFTWARE.
 
 #pragma once
 
+#include <string>
+
 #include "pch.h"
 
 bool VerifyEmbeddedSignature(LPCWSTR pwszSourceFile);
