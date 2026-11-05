@@ -37,7 +37,7 @@ CSecureEdit::~CSecureEdit()
 
 BEGIN_MESSAGE_MAP(CSecureEdit, CEdit)
 	//{{AFX_MSG_MAP(CSecureEdit)
-	ON_CONTROL_REFLECT(EN_UPDATE, OnUpdate)
+	ON_CONTROL_REFLECT(EN_UPDATE, &CSecureEdit::OnUpdate)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 

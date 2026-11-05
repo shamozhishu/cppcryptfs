@@ -35,7 +35,7 @@ THE SOFTWARE.
 extern "C" {
 #endif
 
-	unsigned int OPENSSL_ia32cap_P[];
+	extern unsigned int OPENSSL_ia32cap_P[];
 
 #define HAVE_AES_NI   (OPENSSL_ia32cap_P[1]&(1<<(57-32)))
 

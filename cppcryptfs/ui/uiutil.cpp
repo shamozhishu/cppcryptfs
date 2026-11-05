@@ -122,7 +122,7 @@ wstring CheckOpenHandles(HWND hWnd, const wchar_t* mp, bool interactive, bool fo
 		if (interactive) {
 			CString strMsg;
 			strMsg.Format(LocUtils::GetStringFromResources(IDS_IS_STILL_IN_USE).c_str(), mp);
-			auto res = ::MessageBox(hWnd, mp ? strMsg :	LocUtils::GetStringFromResources(IDS_FS_IS_STILL_IN_USE).c_str(), L"cppcryptfs", MB_YESNO | MB_ICONHAND);
+			auto res = ::MessageBox(hWnd, mp ? (LPCWSTR)strMsg :	LocUtils::GetStringFromResources(IDS_FS_IS_STILL_IN_USE).c_str(), L"cppcryptfs", MB_YESNO | MB_ICONHAND);
 			if (res == IDYES)
 				return L"";
 			else {
